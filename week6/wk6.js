@@ -17,7 +17,7 @@ function globalFunction() {
 
 // console.log(localVar);
 
-document.getElementById('clickThis').onclick = function buttonHandler() {
+document.getElementById('clickThis').onclick = function () {
 	console.log(myGlobal, this.id);
 }
 
@@ -31,7 +31,7 @@ var gizmo = function (gremlin1, gremlin2) {
 }
 
 gizmo(
-	function () {console.log('I am the leader!', myGlobal);}, 
+	function () {console.log('I am the leader!', myGlobal);},
 	function () {console.log('I am #2');}
 );
 
@@ -56,7 +56,7 @@ var student2 = {
 	name : 'John Doe',
 	id : 04939048,
 	age : 19,
-	gender: 'M', 
+	gender: 'M',
 	phone: '(301) 555-5555',
 	status: 'Sophomore',
 	getStatus: function () {
@@ -74,7 +74,7 @@ graduate({
 	name : 'John Doe',
 	id : 04939048,
 	age : 19,
-	gender: 'M', 
+	gender: 'M',
 	phone: '(301) 555-5555',
 	status: 'Sophomore',
 	getStatus: function () {
