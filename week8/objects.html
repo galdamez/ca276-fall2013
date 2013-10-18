@@ -1,10 +1,16 @@
 <h1>Week 8</h1>
 <script>
+	// When creating object literals it's safest to wrap the keys on the left within
+	// single or double quotes. This allows you to use keys that could potentially be
+	// reserved words in the laguage.
+
 	var test = {
 	    'case': 'I am a keyword, so I must be notated as a string',
 	    'class': 'CA 276',
 	    'delete': 'I am a keyword, so me too' // raises SyntaxError
 	};
 
+	// This will only show [Object object]
+	
 	alert(test);
 </script>

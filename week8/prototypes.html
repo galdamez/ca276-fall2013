@@ -1,5 +1,9 @@
 <h1>Prototypes</h1>
 <script type="text/javascript">
+	// The purpose of this exercise is to show how to create basic prototypes
+	// and apply the principle of inheritance.
+
+
 	// Account prototype
 	function Account(balance, name) {
 		this.balance = balance;
@@ -35,7 +39,7 @@
 		this.name = 'shape';
 		this.color = 'fff';
 		this.toString = function () {
-			return this.name + " is now a string";
+			return this.name + ' is now a string';
 		}
 	}
 
@@ -63,6 +67,7 @@
 
 	// Prototype Chaining
 
+
 	// Shape -> TwoDShape
 	TwoDShape.prototype = new Shape();
 	TwoDShape.prototype.constructor = Shape;
@@ -75,10 +80,17 @@
 	Square.prototype = new TwoDShape();
 	Square.prototype.constructor = TwoDShape;
 
+	// instantiate new Shapes
 	var s1, s2, s3;
 
 	s1 = new Shape();
 	s2 = new TwoDShape();
 	s3 = new Triangle(100, 200);
 	s4 = new Square(100, 200);
+
+	// Are all these shape objects an instance of Shape?
+	console.log(s1 instance of Shape);
+	console.log(s2 instance of Shape);
+	console.log(s3 instance of Shape);
+	console.log(s4 instance of Shape);
 </script>
