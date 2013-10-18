@@ -1,0 +1,84 @@
+<h1>Prototypes</h1>
+<script type="text/javascript">
+	// Account prototype
+	function Account(balance, name) {
+		this.balance = balance;
+		this.name = name;
+		this.debit = function (amount) {
+			// Increase balance by amount
+			this.balance -= amount;
+		};
+	}
+
+	var a1, a2, a3;
+
+	// Create new instances of Account
+	a1 = new Account(100, 'Jane');
+	a2 = new Account(200, 'John');
+	a3 = new Account(300, 'Joe');
+
+	a1.debit(20);
+	a2.debit(30);
+	a3.debit(5000)
+
+	// a1.balance = 100;
+	// a2.balance = 200;
+	// a3.balance = 300;
+
+	// console.log(a1, a2, a3);
+
+	// console.log(a1 instanceof Account);
+
+	// Shape inheritance
+
+	function Shape() {
+		this.name = 'shape';
+		this.color = 'fff';
+		this.toString = function () {
+			return this.name + " is now a string";
+		}
+	}
+
+	function TwoDShape() {
+		this.name = '2D shape';
+	}
+
+	function Triangle(side, height) {
+		this.name = 'Triangle';
+		this.side = side;
+		this.height = height;
+		this.getArea = function () {
+			return (this.side * this.height) / 2;
+		}
+	}
+
+	function Square(side, height) {
+		this.name = 'Square';
+		this.side = side;
+		this.height = height;
+		this.getArea = function () {
+			return (this.side * this.height);
+		}
+	}
+
+	// Prototype Chaining
+
+	// Shape -> TwoDShape
+	TwoDShape.prototype = new Shape();
+	TwoDShape.prototype.constructor = Shape;
+	
+	// TwoDShape -> Triangle
+	Triangle.prototype = new TwoDShape();
+	Triangle.prototype.constructor = TwoDShape;
+
+	// TwoDShape -> Triangle
+	Square.prototype = new TwoDShape();
+	Square.prototype.constructor = TwoDShape;
+
+	var s1, s2, s3;
+
+	s1 = new Shape();
+	s2 = new TwoDShape();
+	s3 = new Triangle(100, 200);
+	s4 = new Square(100, 200);
+</script>
