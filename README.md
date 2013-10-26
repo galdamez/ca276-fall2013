@@ -1,4 +1,4 @@
-ca276-fall2013
+CA 276 Fall 2013
 ==============
 
 Montgomery College JavaScript Fundamentals course materials
