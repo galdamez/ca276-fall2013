@@ -55,7 +55,7 @@ globalFunction();
 
 // A basic function will look like this
 
-var getRandomInt(rangeLength) {
+function getRandomInt(rangeLength) {
 	return Math.floor(Math.random() * rangeLength);
 }
 
@@ -72,7 +72,7 @@ var getRandomInt = function(rangeLength) {
 // function. The property "onclick" is set to function that will execute when the
 // click happens.
 
-document.getElementById('clickThis').onclick = function () {
+document.getElementById('clickThis').onclick = function() {
 	console.log(myGlobal, this.id);
 }
 
@@ -85,7 +85,7 @@ document.getElementById('clickThis').onclick = function () {
 // Libraries like jQuery and even some native JavaScript functions expect you to pass
 // functions as arguments.
 
-var gizmo = function (gremlin1, gremlin2, globalTest) {
+var gizmo = function(gremlin1, gremlin2, globalTest) {
 	// We're definining a local variable named myGlobal. The point is to see whether
 	// or not the code in globalTest() will access the local myGlobal or the global
 	// myGlobal.
@@ -107,9 +107,15 @@ var gizmo = function (gremlin1, gremlin2, globalTest) {
 // We call the function gizmo by passing it three arguments. All three arguments are functions.
 // We use white space to break up the arguments on to separate lines for readability's sake.
 gizmo(
-	function () {console.log('I am Stripe!');},
-	function () {console.log('I am Poker Player!');},
-	function () {console.log(myGlobal);}
+	function() {
+		console.log('I am Stripe!');
+	},
+	function() {
+		console.log('I am Poker Player!');
+	},
+	function() {
+		console.log(myGlobal);
+	}
 );
 
 // setTimeout will execute code after a certain period of time. It takes two arguments:
@@ -118,7 +124,7 @@ gizmo(
 // setTimeout has a cousin named setInterval which executes repeatedly. Its syntax is
 // almost identical.
 
-setTimeout(function () {
+setTimeout(function() {
 	console.log('Thank you for your patience!');
 }, 2000);
 
@@ -137,19 +143,19 @@ student1.gender = 'F';
 student1.phone = '(240) 555-5555';
 student1['status'] = 'Freshman';
 student1['007'] = 'James Bond';
-student1.getStatus = function () {
+student1.getStatus = function() {
 	return this.status;
 }
 
 // Populating an object using an object literal
 var student2 = {
-	name : 'John Doe',
-	id : 04939048,
-	age : 19,
+	name: 'John Doe',
+	id: 04939048,
+	age: 19,
 	gender: 'M',
 	phone: '(301) 555-5555',
 	status: 'Sophomore',
-	getStatus: function () {
+	getStatus: function() {
 		return this.status;
 	}
 };
@@ -168,13 +174,13 @@ graduate(student2);
 
 // Execute by sending an object literal as the first argument
 graduate({
-	name : 'John Doe',
-	id : 04939048,
-	age : 19,
+	name: 'John Doe',
+	id: 04939048,
+	age: 19,
 	gender: 'M',
 	phone: '(301) 555-5555',
 	status: 'Sophomore',
-	getStatus: function () {
+	getStatus: function() {
 		return this.status;
 	}
 });
