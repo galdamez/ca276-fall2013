@@ -5,8 +5,8 @@
 	input
 */
 
-var 
-	currencyName1, 
+var
+currencyName1,
 	currencyName2,
 	countryName1,
 	countryName2,
@@ -23,7 +23,7 @@ conversionRate = 66.01;
 // Calculate conversion
 
 // Capture button click
-document.getElementById('calculateButton').onclick = function () {
+document.getElementById('calculateButton').onclick = function() {
 	// get the user's input
 	amount1 = document.getElementById('amount1').value;
 
@@ -33,11 +33,3 @@ document.getElementById('calculateButton').onclick = function () {
 	// write the result to the page
 	document.getElementById('amount2').value = amount2;
 };
-
-
-
-
-
-
-
-
