@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM exercises</title>
+	<style>
+		#mask {
+			background-color: #000;
+			height: 100%;
+			width: 100%;
+			z-index: 100;
+			position: fixed;
+			top: 0;
+			left: 0;
+			opacity: 0.3;
+			
+		}
+
+		#modal {
+			top: 37%;
+			position: fixed;
+			left: 33%;
+			z-index: 200;
+			border-radius: 12px;
+			padding: 16px;
+			background-color: #fff;
+			width: 401px;
+			
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<input id="terms" type="button" value="Terms and Conditions">
+	</form>
+	<div id="container"></div>
+	<!-- <div id="mask"></div>
+	<div id="modal">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, repudiandae, minima, in iure eos dolorum placeat consequatur vero magni eius explicabo magnam delectus laboriosam deleniti quia illo non voluptatibus libero.
+	</div> -->
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="wk9.js"></script>
+</body>
+</html>
