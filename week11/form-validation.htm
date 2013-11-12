@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!-- saved from url=(0100)http://web4students.montgomerycollege.edu/courses/Fall2013/Rockville/CA27621984/form_validation.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Week 10 - Form Validation</title>
+		<style type="text/css">
+			body { font-family: Helvetica, sans-serif; font-size: 14px; }
+			
+			br { clear: both; }
+			
+			form div, input, label, select, textarea { display: block; float: left; font-weight: normal; }
+			
+			form div label, form div input { float: none; display: inline; }
+			
+			form div, label + input, label + textarea, label + select, label + textarea { margin-bottom: 15px; }
+			
+			form div br { clear: none; }
+						
+			input, textarea { font: 12px Helvetica, Arial; color: DarkBlue; }
+			
+			input[type="text"] { width: 250px; }
+			
+			input[type="email"] { width: 175px; }
+			
+			input[type="radio"], input[type="checkbox"] { padding-right: 5px; }
+			
+			label { width: 100px; }
+			
+			a:visited { color: Blue; }
+			
+			textarea { display: inline; height: 75px; width: 225px; }
+			
+			#form_wrapper { border: 1px solid Gray; border-radius: 8px; margin: 0 auto; padding: 10px 15px; width: 500px; }
+			
+			.hidden { display: none; }
+			
+			.dialog { border-radius: 8px; font-size: 18px; font-weight: bold; padding: 8px 0; margin: 0 auto 16px auto; text-align: center; width: 80%; }
+			
+			.warning { background-color: LightPink; color: DarkRed; }
+			
+			.status { background-color: LightGreen; color: Teal; }
+			
+			#error { background-color: LightPink; border-radius: 4px; color: DarkRed; padding: 8px; }
+		</style>
+	</head>
+	<body>
+		<div id="form_wrapper">
+			<form method="post" action="form-submit.cfm">
+				<label for="first_name">First name</label>
+				<input type="text" id="first_name" name="first_name" class="required" value="Jose"><br>
+				<label for="last_name">Last name</label>
+				<input type="text" id="last_name" name="last_name" class="required"><br>
+				<label id="birthday">Birthday</label>
+				<input type="text" name="birthday" value="1/15/2013"><br>
+				<label for="email">Email</label>
+				<input type="text" name="email" value="jose@ms.com"><br>
+				<label for="about_me">About me</label>
+				<textarea id="about_me"></textarea><br>
+				<label for="number">Pick a number</label>
+				<select id="number" name="number">
+					<option value="">---Please select---</option>
+					<option value="One">One</option>
+					<option value="Two">Two</option>
+					<option value="Three">Three</option>
+				</select>
+				<br>
+				<label for="year">Year at MC</label>
+				<div>
+					<label><input type="radio" id="year" name="year">First</label><br>
+					<label><input type="radio" name="year">Second</label><br>
+					<label><input type="radio" name="year">Third</label><br>
+					<label><input type="radio" name="year">Fourth</label>
+				</div>
+				<br>
+				<label for="skills">Skills</label>
+				<div>
+					<label><input type="checkbox" id="skills" name="skills">HTML</label><br>
+					<label><input type="checkbox" name="skills">CSS</label><br>
+					<label><input type="checkbox" name="skills">JavaScript</label>
+				</div>
+				<br>
+				<label id="password">Password</label>
+				<input type="password" name="password"><br>
+				
+				<label>&nbsp;</label>
+				<div id="error" class="hidden"></div><br>
+				
+				<label>&nbsp;</label>
+				<input type="submit" value="Submit"><br>
+			</form>
+		</div>
+		<script>
+			var form = document.querySelector('form');
+			form.addEventListener('submit', function (e) {
+				var errors, i, errorDiv, namePattern, emailPattern;
+				
+				errors = [];
+				errorDiv = document.getElementById('error');
+				namePattern = /^[a-z'-]+$/igm;
+				emailPattern = /[a-z0-9_\-.]+@[a-z0-9]+\.[a-z]{2,}(.[a-z]{2,})?/igm;
+				
+				// Make sure length greater than zero
+				if (namePattern.test(this.first_name.value) === false) {
+					errors.push('First name is required');
+				}
+
+				// Make sure e-mail is valid
+				if (emailPattern.test(this.email.value) === false) {
+					errors.push('Invalid e-mail');
+				}
+
+				// Drop down validation
+				if (this.number.value.length === 0) {
+					errors.push('Please select a number');
+				}
+
+				// Date validation
+				if (isDate(this.birthday.value) === false) {
+					errors.push('Invalid birthday');
+				}
+
+				// Radio button validation
+				if (document.querySelectorAll('[name=year]:checked').length === 0) {
+					errors.push('Please select a year');
+				}
+
+				//If any inputs failed prevent form submit
+				if (errors.length > 0) {
+					//prevent form submit
+					e.preventDefault();
+					
+					//unhide
+					errorDiv.className = '';
+					
+					//clear out previous errors
+					errorDiv.innerHTML = errors.join('<br>');
+				}
+			}, false);
+
+			// date === 12/30/2013
+			function isDate(date) {
+				var dateParts;
+
+				dateParts = date.split('/');
+
+				if (dateParts.length !== 3) {
+					return false;
+				}
+
+				// All numbers
+				if (
+					isNaN(parseFloat(dateParts[0])) || 
+					isNaN(parseFloat(dateParts[1])) ||
+					isNaN(parseFloat(dateParts[2]))
+					) {
+					return false;
+				}
+
+				// Month validation
+				if (dateParts[0] < 1 && dateParts[0] > 12) {
+					return false;
+				}
+
+				return true;
+			}
+		</script>
+	
+
+</body></html>
